@@ -44,34 +44,33 @@ var getData = function(){
 	
 };
 
-	// Get value of selected Radio Button
-	var radio = function() {
-		return $('input:radio[name=series]:checked').val();
-	};
+// Get value of selected Radio Button
+var selectedRadio = function() {
+	return $('input:radio[name="series"]:checked').val();
+};
 	
 	
-var storeData = function(data){
+var storeData = function(data) {
 	if (!data) {
-		var id = Math.floor(Math.random()*1000001);
+		var id = Math.floor(Math.random() * 1000001);
 	} else {
 		id = data;
-		
-		getSelectedRadio( ); // calls the value of the radio button
-		var item = { };
-			item.genre = [ "Genre:", $( '#genre' ).val() ];
-			item.title = [ "Book Title:", $( '#btitle' ).val() ];
-			item.author = [ "Author:", $( '#author' ).val() ];
-			item.isbn = [ "ISBN #:", $( '#isbn' ).val() ];
-			item.review = ["Comments:", $( '#review' ).val() ];
-			item.rate = ["Rate:",$( '#rate' ).val() ];
-			item.series = [ "Series:", series ]; // for radio buttons
-			item.seriesname = [ "Series Name:", $( '#seriesname' ).val() ];
-			item.seriesnum = [ "Series Number:", $( '#seriesnum' ).val() ];
-			item.date = [ "Date:", $( '#date' ).val() ];    // correcting missing date field
-			// Save data to local storage using JSON stringify to convert objects to a string.
-			localStorage.setItem( id, JSON.stringify( item ) );
-		alert ("Saved" ); 
-		}; 
+		selectedRadio();  //calls the value of the radio button
+		var item = {};
+			item.genre = ["Genre:", $('#genre').val()];
+			item.title = ["Book Title:", $('#title').val()];
+			item.author =["Author:",$('#author').val()];
+			item.isbn = ["ISBN:",$('#isbn').val()];
+			item.review = ["Review",$('#review').val()];
+			item.rate = ["Rate:",$('#rate').val()];
+			item.series = ["Series:",$('#series').val()];
+			item.seriesname = ["Series Name:",$('#seriesname').val()];
+			item.seriesnum = ["Series Number:",$('#seriesnum').val()];
+			item.date = ["Date:",$('#date').val()];
+			console.log(item);
+			localStorage.setItem(id, JSON.stringify( item) );
+	}
+}; 
 
 var	deleteItem = function (){
 			
