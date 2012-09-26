@@ -46,16 +46,20 @@ var getData = function(){
 
 // Get value of selected Radio Button
 var selectedRadio = function() {
-	return $('input:radio[name="series"]:checked').val();
+	return $("input:radio[name=series]:checked").val();
 };
-	
-	
+/*	
+$("input:radio[name=series]").click(function() {
+    var rbutton = $(this).val();
+    return rbutton;
+});
+*/	
 var storeData = function(data) {
 	if (!data) {
 		var id = Math.floor(Math.random() * 1000001);
 	} else {
 		id = data;
-		selectedRadio();  //calls the value of the radio button
+		button = selectedRadio();  //calls the value of the radio button
 		var item = {};
 			item.genre = ["Genre:", $('#genre').val()];
 			item.title = ["Book Title:", $('#title').val()];
@@ -63,7 +67,7 @@ var storeData = function(data) {
 			item.isbn = ["ISBN:",$('#isbn').val()];
 			item.review = ["Review",$('#review').val()];
 			item.rate = ["Rate:",$('#rate').val()];
-			item.series = ["Series:",$('#series').val()];
+			item.series = ["Series:",button];
 			item.seriesname = ["Series Name:",$('#seriesname').val()];
 			item.seriesnum = ["Series Number:",$('#seriesnum').val()];
 			item.date = ["Date:",$('#date').val()];
