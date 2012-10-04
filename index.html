@@ -41,9 +41,11 @@
 			
 		<div data-role="content" >
 			<img src="images/CTA.png" alt="Logo" height="200" width="290" />
-		<p><a href="#addItem" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Add a Book Now</a></p>
-
-<!--			<p><a href="#serial" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Go to Data Serialization</a></p>  to be used later... -->
+			<div data-role='fieldcontain'>
+				<a href="#addItem" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Add a Book Now</a> 
+				<a href="#serial" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week2 Data Serialization</a>   
+				<a href="#underConst" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week3 CouchDB</a>
+			</div> 
 
 		</div><!--Close Home Page Content-->
 		
@@ -59,6 +61,41 @@
 	</div>
 <!--Close Home-->
 
+<!-- Data Serialization -->
+	<div data-role="page" id="serial">
+		<div data-role="header"  data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="images/BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>	
+				<label data-inline="true">Week2 Data Serialization</label>
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<a href="#json" data-role="button" id="jsonBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">JSON Data Serialization</a>
+				<a href="#xml" data-role="button" id="xmlBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">XML Data Serialization</a>
+				<a href="#yaml" data-role="button" id="yamlBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">YAML Data Serialization</a>
+			</div>	
+		</div>
+		<div>
+			<ul id="xmlShelf" data-role="listview"></ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#search" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#browse" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#newsfeed" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close Browse -->
+
+
 <!-- addItem page -->
 	<div data-role="page" id="addItem">
 		<div data-role="header"  data-position="fixed">
@@ -73,10 +110,10 @@
 		<div data-role="content">	
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-					<a href="#theLibrary" id="displayLink" data-inline="true" data-role="button" data-mini="true" data-icon="info" data-iconpos="right" data-theme="b" data-ajax="false">Display</a>
+					<a href="#display" id="display" data-inline="true" data-role="button" data-mini="true" data-icon="info" data-iconpos="right" data-theme="b" data-ajax="false">Display</a>
 				</div><!-- Close block-A-->
 				<div class="ui-block-b">
-			          <a href="#" id="clearLink" data-inline="true" data-role="button" data-mini="true" data-icon="alert" data-iconpos="right" data-theme="c" data-ajax="false">Clear</a>		
+			          <a href="#" id="clearLocal" data-inline="true" data-role="button" data-mini="true" data-icon="alert" data-iconpos="right" data-theme="c" data-ajax="false">Clear</a>		
 			</div><!--Close block-B-->
 			</div> <!--Close Grid-a -->
 			<form action="#" id="recordbooksform" > 
@@ -157,10 +194,10 @@
 					<input type="range" data-theme="a" data-mini="true" name="rate" id="rate" value="5" min="0" max="10" />
 					<br/><p>On a Scale of 1 to 10, did you like the book?</p>
 				</div>
-	<!-- Input Review -->
+	<!-- Input Comments -->
 				<div class="required">
-					<label for="review">Reader Comments:</label>
-					<textarea class="required" placeholder="Please enter your opinion of this book" id="review"></textarea>
+					<label for="comments">Reader Comments:</label>
+					<textarea class="required" placeholder="Please enter your opinion of this book" id="comments"></textarea>
 				</div><br />
 				
 	<!-- Date -->
@@ -196,6 +233,38 @@
 		</div>
 	</div>
 <!-- close addItem page -->
+
+<!-- The Library -->
+	<div data-role="page" id="myLibrary">
+		<div data-role="header"  data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="images/BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>
+				<label data-inline="true">My Library</label>	
+			</div>
+		</div>
+		
+		<div data-role="content" >
+			<h3>List of Books</h3>
+				<ul id="theShelf" data-role="listview"></ul>	
+			<li></li>
+			<li></li>
+			<li></li>
+		</div>
+
+    		
+    		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#search" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#browse" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#newsfeed" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close The Library -->
 
 <!-- RecordBooksErrors -->
 	<div data-role="dialog" id="recordbookserrors" >
@@ -439,6 +508,36 @@
 		</div>
 	</div>
 <!-- close RSSFeed -->
+
+<!-- Under Construction Page -->
+	<div data-role="page" id="underConst">
+		<div data-role="header" data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="images/BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>
+				<label data-inline="true">Sorry!</label>	
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<img src="images/diy_puppy.png"/>
+			<p>Requested Page is Under Construction!</p>
+			<p>Free image courtesy of FreeDigitalPhotos.net</p>
+			<p>Image: <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></p>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#search" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#browse" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#newsfeed" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close Under Construction Page -->
 	
 
 	<!-- JavaScript under here -->
@@ -453,6 +552,9 @@
      <script type="text/javascript" src="js/libs/RssFeed.js"></script>
 	<script type="text/javascript" src="js/libs/RssFeeder.js"></script>
 	<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="xhr/data.json"></script>
+	<script type="text/javascript" src="xhr/data.xml"></script>
+	<script type="text/javascript" src="xhr/data.yml"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
 </body>
