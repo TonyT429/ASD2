@@ -1,3 +1,6 @@
+//  Anthony Torrez
+//  ASD 1210 Week2
+
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 });	
