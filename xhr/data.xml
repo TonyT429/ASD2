@@ -6,6 +6,7 @@
         	<isbn>0-8256-3157-2</isbn>
         	<genre>Cookbooks, Food and Wine</genre>
         	<comments>Intoxicating</comments>
+        	<rate>10</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -17,6 +18,7 @@
         	<isbn>0-06-015613-9</isbn>
         	<genre>Medical</genre>
         	<comments>It works!  Surprised the hell out of my doctor!</comments>
+        	<rate>8</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -28,6 +30,7 @@
         	<isbn>0-671-79154-0</isbn>
         	<genre>Self Help</genre>
         	<comments>Cool</comments>
+        	<rate>7</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -39,6 +42,7 @@
         	<isbn>978-1-4127-4626-7</isbn>
         	<genre>Medical</genre>
         	<comments>Nice</comments>
+        	<rate>8</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -50,6 +54,7 @@
         	<isbn>978-0-9844907-1-4</isbn>
         	<genre>Medical</genre>
         	<comments>Good</comments>
+        	<rate>7</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -62,6 +67,7 @@
         	<isbn>158516165-9</isbn>
         	<genre>Medical</genre>
         	<comments>Rev. Pilarczyk was the one who did the English translation</comments>
+        	<rate>10</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -73,6 +79,7 @@
         	<isbn>1-882330-91-9</isbn>
         	<genre>Medical</genre>
         	<comments>Helpful</comments>
+        	<rate>8</rate>
         	<series>No</series>
         	<seriesName>""</seriesName>
         	<seriesNum>""</seriesNum>
@@ -84,6 +91,7 @@
         	<isbn>978-0-446-61875-5</isbn>
         	<genre>Sci Fi and Fantasy</genre>
         	<comments>Excellent Story</comments>
+        	<rate>8</rate>
         	<series>Yes</series>
         	<seriesName>A Werewolf Named Kitty</seriesName>
         	<seriesNum>4</seriesNum>
@@ -95,6 +103,7 @@
         	<isbn>0-446-61641-9</isbn>
         	<genre>Sci Fi and Fantasy</genre>
         	<comments>Excellent</comments>
+        	<rate>9</rate>
         	<series>Yes</series>
         	<seriesName>A Werewolf Named Kitty</seriesName>
         	<seriesNum>1</seriesNum>
