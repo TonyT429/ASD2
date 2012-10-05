@@ -139,7 +139,7 @@ $('#display').on('click', display);
 	function display() {
 		if (localStorage.length === 0){
 			alert("There are no books to display");
-			autofill();
+			autofillData();
 		} else {
 		getBookList();
 		}
