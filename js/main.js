@@ -46,7 +46,8 @@ var autofillData = function (){
 		switch(n) {
 			case "on":
 				$("#addItem").css("display", "none");
-				$('#getBookList').css("display", "none");				
+				$('#getBookList').css("display", "none");
+				$('#display').css("display", "block");				
 				break;
 			case "off":
 				$("#addItem").css("display", "block");
@@ -138,6 +139,7 @@ $('#display').on('click', display);
 	function display() {
 		if (localStorage.length === 0){
 			alert("There are no books to display");
+			autofill();
 		} else {
 		getBookList();
 		}
@@ -182,7 +184,6 @@ $('#serial').on('pageinit', function(){
 
 	// Serialization of XML Data
 	$('#xmlBooks').on('click', function() {
-	    console.log('#xmlBooks');
 		$('#myLibrary').empty();
           $('#theShelf').empty();
 	    $.ajax({
@@ -190,9 +191,7 @@ $('#serial').on('pageinit', function(){
 	            type: 'GET',
 	            dataType: 'xml',
 	            success: function(xml) {
-	                console.log(xml);
 	                $(xml).find('item').each(function() {
-	                	console.log(item);
 	                    var item = $(this).find('item').text();
 	                    var title = $(this).find('title').text();
 					var author = $(this).find('author').text();
@@ -215,14 +214,17 @@ $('#serial').on('pageinit', function(){
                                    '<p>Number in Series: ' + seriesNum + '</p>' +
                                    '<p>Date: ' + date + '</p>' +
                               '</li>'
-                              ).appendTo('#xmlShelf');
-                              $('#xmlShelf').listview('refresh');
+                              ).appendTo('#theShelf');
+                              $('#theShelf').listview('refresh');
 				});
             	}
 	    });
 	});
-	
-/*	// Serialization of JSON Data
+
+
+/*   The new function using .find and .each is not working for some reason.
+$('#serialJSON').on('pageinit', function(){	
+	// Serialization of JSON Data
 	$('#jsonBooks').on('click', function() {
 		console.log('jsonBooks');
 		$('#myLibrary').empty();
@@ -253,14 +255,55 @@ $('#serial').on('pageinit', function(){
                    });
           	}
           });
-          error: function(result) { 
-               console.log(result);  
-          }
+//          error: function(result) { 
+//               console.log(result);  
+          });
           return false;
      });
-*/	
+     
+*/
+     
+     
+// Serialization of JSON Data
+    $('#jsonBooks').on('click', function() {
+        $('#myLibrary').empty();
+          $('#theShelf').empty();
+          $.ajax({
+			url: 'xhr/data.json',
+			type: 'GET',
+               dataType: 'json',
+               success: function(responseText) {
+                   for (var i=0, j=responseText.item.length; i<j; i++){
+					var book = responseText.item[i];
+                         	$(""+
+                         	'<li>' +
+                                    '<p>' + book.genre + '</p>' +
+                                    '<p>' + book.title + '</p>' +
+                                  	 '<p>' + book.author + '</p>' +
+                                	 '<p>' + book.isbn + '</p>' +
+                                    '<p>' + book.comments + '</p>' +
+                                    '<p>' + book.series + '</p>' +
+                                    '<p>' + book.seriesname + '</p>' +
+                                    '<p>' + book.seriesnum + '</p>' +
+                                    '<p>' + book.date + '</p>' +
+                                    '</li>'
+						).appendTo('#theShelf');
+                              $("#theShelf").listview("refresh");
+                              	console.log("Working");
+                              	console.log(responseText);
+                    }
+			},
+			error: function(result) { 
+				console.log(result);  
+               }
+          });
+          return false;
+     });
+     
+     
 	
-});   // Closes out #serial
+});	
+
 
 
 
