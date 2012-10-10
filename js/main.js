@@ -204,15 +204,15 @@ $('#serial').on('pageinit', function(){
 	                    var date = $(this).find('date').text();
                          $("" +
                              '<li>' +
-                                 '<p>Title: ' + title + '</p>' +
-                                   '<p>Author: ' + author + '</p>' +
-                                   '<p>ISBN: ' + isbn + '</p>' +
-                                   '<p>Comments: ' + comments + '</p>' +
-                                   '<p>Rate: ' + rate + '</p>' +
-                                   '<p>Series: ' + series + '</p>' +
-                                   '<p>Series Name: ' + seriesName + '</p>' +
-                                   '<p>Number in Series: ' + seriesNum + '</p>' +
-                                   '<p>Date: ' + date + '</p>' +
+                                 '<h3>Title:  ' + title + '</h3>' +
+                                   '<p>Author:  ' + author + '</p>' +
+                                   '<p>ISBN:  ' + isbn + '</p>' +
+                                   '<p>Comments:  ' + comments + '</p>' +
+                                   '<p>Rate:  ' + rate + '</p>' +
+                                   '<p>Series:  ' + series + '</p>' +
+                                   '<p>Series Name:  ' + seriesName + '</p>' +
+                                   '<p>Number in Series:  ' + seriesNum + '</p>' +
+                                   '<p>Date:  ' + date + '</p>' +
                               '</li>'
                               ).appendTo('#theShelf');
                               $('#theShelf').listview('refresh');
@@ -222,46 +222,6 @@ $('#serial').on('pageinit', function(){
 	});
 
 
-/*   The new function using .find and .each is not working for some reason.
-$('#serialJSON').on('pageinit', function(){	
-	// Serialization of JSON Data
-	$('#jsonBooks').on('click', function() {
-		console.log('jsonBooks');
-		$('#myLibrary').empty();
-          $('#theShelf').empty();
-          $.ajax({
-              url: 'xhr/data.json',
-               type: 'GET',
-               dataType: 'json',
-               success: function(responseText) {
-                   $(responseText).find('item').each(function() {
-                       $(""+
-                              '<li>' +
-                                   '<p>' + responseText.genre + '</p>' +
-                                   '<p>' + responseText.title + '</p>' +
-                                   '<p>' + responseText.author + '</p>' +
-                                   '<p>' + responseText.isbn + '</p>' +
-                                   '<p>' + responseText.comments + '</p>' +
-                                   '<p>' + responseText.rate + '</p>' +
-                                   '<p>' + responseText.series + '</p>' +
-                                   '<p>' + responseText.seriesname + '</p>' +
-                                   '<p>' + responseText.seriesnum + '</p>' +
-                                   '<p>' + responseText.date + '</p>' +
-                              '</li>'
-                         ).appendTo('#theShelf');
-                         $("#theShelf").listview("refresh");
-                              console.log("Working");
-                              console.log(responseText);
-                   });
-          	}
-          });
-//          error: function(result) { 
-//               console.log(result);  
-          });
-          return false;
-     });
-     
-*/
      
      
 // Serialization of JSON Data
@@ -273,20 +233,20 @@ $('#serialJSON').on('pageinit', function(){
 			type: 'GET',
                dataType: 'json',
                success: function(responseText) {
-                   for (var i=0, j=responseText.item.length; i<j; i++){
-					var book = responseText.item[i];
+                   for (var i=0, j=responseText.items.length; i<j; i++){
+					var book = responseText.items[i];
                          	$(""+
                          	'<li>' +
-                                    '<p>' + book.genre + '</p>' +
-                                    '<p>' + book.title + '</p>' +
-                                  	 '<p>' + book.author + '</p>' +
-                                	 '<p>' + book.isbn + '</p>' +
-                                    '<p>' + book.comments + '</p>' +
-                                    '<p>' + book.series + '</p>' +
-                                    '<p>' + book.seriesname + '</p>' +
-                                    '<p>' + book.seriesnum + '</p>' +
-                                    '<p>' + book.date + '</p>' +
-                                    '</li>'
+                                    '<h3>Title:  ' + book.title + '</h3>' +
+                                  	 '<p>Author:  ' + book.author + '</p>' +
+                                  	 '<p>Genre:  ' + book.genre + '</p>' +
+                                	 '<p>ISBN:  ' + book.isbn + '</p>' +
+                                    '<p>Comments:  ' + book.comments + '</p>' +
+                                    '<p>Series:  ' + book.series + '</p>' +
+                                    '<p>Series Name:  ' + book.seriesName + '</p>' +
+                                    '<p>Number in Series:  ' + book.seriesNum + '</p>' +
+                                    '<p>Date:  ' + book.date + '</p>' +
+						'</li>'
 						).appendTo('#theShelf');
                               $("#theShelf").listview("refresh");
                               	console.log("Working");
