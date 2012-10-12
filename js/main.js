@@ -1,5 +1,5 @@
 //  Anthony Torrez
-//  ASD 1210 Week2
+//  ASD 1210 Week3
 
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
@@ -179,15 +179,14 @@ var editItem = function () {
 	editStoreData.key = this.key;	
 }
 
-
+// Week 2 Data Serialization
 $('#serial').on('pageinit', function(){
 
 	// Serialization of XML Data
 	$('#xmlBooks').on('click', function() {
-		$('#myLibrary').empty();
-          $('#theShelf').empty();
-	    $.ajax({
-	        url: 'xhr/data.xml',
+     	$('#theShelf').empty();
+		$.ajax({
+	        	url: 'xhr/data.xml',
 	            type: 'GET',
 	            dataType: 'xml',
 	            success: function(xml) {
@@ -226,7 +225,6 @@ $('#serial').on('pageinit', function(){
      
 // Serialization of JSON Data
     $('#jsonBooks').on('click', function() {
-        $('#myLibrary').empty();
           $('#theShelf').empty();
           $.ajax({
 			url: 'xhr/data.json',
@@ -259,14 +257,25 @@ $('#serial').on('pageinit', function(){
           });
           return false;
      });
-     
-     
-	
+     	
 });	
 
 
 
+// Week 3 Eclipse, CouchDB, and Cloudant
 
+$('#couch').on('pageinit', function(){
+     $('#onTheCouch').empty();
+	$.ajax({
+		"url": "_view/books",
+		"dataType": "json",
+		"success": function(data) {
+			$.each(data.rows, function(index, books) {
+				console.log(value);
+			});
+		}
+	});
+});
 
 
 
