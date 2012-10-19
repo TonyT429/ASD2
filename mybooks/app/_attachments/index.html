@@ -1,29 +1,303 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My New CouchApp</title>
-    <link rel="stylesheet" href="style/main.css" type="text/css">
-  </head>
-  <body>
-    <div id="account"></div>
+<!--  Anthony Torrez -->
+<!--  ASD 1210 Week 3 -->
+<!-- Stripping out Week2 stuff -->
+<!doctype html>  
+<html lang="en">
+<head>
 
-    <h1>Generated CouchApp</h1>
+	<meta charset="utf-8"/>
+	
+	<title>ASD 2.0 BookTrackR</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on"/>
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+	<link rel="stylesheet" href="styles.css" /> 
+	<style type="text/css">
+		.ui-page {
+			background: transparent url(PecanBackground.png);  <!-- thinking of changing this background -->
+		}
+	</style>
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="modernizr.custom.min.js"></script>
 
-    <div id="profile"></div>
-    <div id="items"></div>
+</head>
+<body>
 
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, or a grocery list, or a chat room.</p>
-    </div>
-  </body>
-  <script src="vendor/couchapp/loader.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    $.couch.app(function(app) {
-      $("#account").evently("account", app);
-      $("#profile").evently("profile", app);
-      $.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-      $("#items").evently("items", app);
-    });
-  </script>
+<!-- Home Page -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" >
+			<img src="BookTrackerLogo.png" height="60" width="160" data-inline="true" /> 
+			<label>Home</label>		
+		</div><!--Close Home Page Header-->
+			
+		<div data-role="content" >
+			<img src="CTA.png" alt="Logo" height="200" width="290" />
+			<div data-role='fieldcontain'>
+				<a href="#addItem" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Add a Book Now</a> 
+	 			<a href="#serial" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week 3 Data Serialization</a>  	  
+
+			</div>
+			<div>
+				<ul id="onTheCouch" data-role="listview" class="ui-body-a"></ul>
+			</div> 
+
+		</div><!--Close Home Page Content-->
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#underConst" data-role="button"  data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#underConst" data-role="button"  data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#underConst" data-role="button"  data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div><!--Close Navbar-->
+		</div><!--Close Footer-->
+	</div>
+<!--Close Home-->
+
+
+
+<!-- Week 3 Couch Serialization -->
+	<div data-role="page" id="serial">
+		<div data-role="header"  data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>	
+				<label data-inline="true">Week 3 Couch Data Serialization</label>
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<a href="#couch" data-role="button" id="couchBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">Couch Data Serialization TEST</a>  
+<!--  				<a href="#json" data-role="button" id="jsonBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">JSON Data Serialization</a>
+				<a href="#xml" data-role="button" id="xmlBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">XML Data Serialization</a>
+				<a href="#yaml" data-role="button" id="yamlBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">YAML Data Serialization</a> -->
+			</div>	
+		</div>
+		<div>
+			<ul id="theCouch" data-role="listview"></ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+  <!-- close Browse -->
+
+
+<!-- addItem page -->
+	<div data-role="page" id="addItem">
+		<div data-role="header"  data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>	
+				<label>Record Books</label>
+			</div><!--branding-->
+		</div><!--header-->
+		
+		<div data-role="content">	
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#display" id="display" data-inline="true" data-role="button" data-mini="true" data-icon="info" data-iconpos="right" data-theme="b" data-ajax="false">Display</a>
+				</div><!-- Close block-A-->
+				<div class="ui-block-b">
+			          <a href="#" id="clearLocal" data-inline="true" data-role="button" data-mini="true" data-icon="alert" data-iconpos="right" data-theme="c" data-ajax="false">Clear</a>		
+			</div><!--Close block-B-->
+			</div> <!--Close Grid-a -->
+			<form action="#" id="recordbooksform" > 
+	<!-- Input Title -->
+				<div>
+					<label for="title">Book Title:</label>
+					<input type="text" placeholder="Please Enter the Book Title" data-mini="true" name="title" id="title" class="required" />
+				</div>
+	<!-- Input Author-->
+				<div>
+					<label for="author">Author's Name:</label>
+					<input type="text" placeholder="Please Enter the Author's name" data-mini="true" name="author" id="author" class="required" />
+				</div>
+	<!-- Input ISBN -->
+				<div>
+					<label for="isbn">ISBN:</label>
+					<input type="text" placeholder="Please Enter the 10 or 13 digit ISBN - digits only" data-mini="true" name="isbn" id="isbn" class="digits" />
+				</div>
+	<!-- Select Genre Option -->
+				<div data-role="fieldcontain">
+					<label for="genre">Genre:</label> 
+					<select name="genre" id="genre" data-theme="a"  data-mini="true" data-native-menu="false" class="required">
+					<option data-placeholder="true">Select a Genre</option>
+						<optgroup label="Fiction">
+							<option value="child_book" >Children's Books</option>
+							<option value="horror" >Horror</option>
+							<option value="humor">Humor</option>
+							<option value="manga">Manga & Graphic Novels</option>
+							<option value="romance">Romance</option>
+							<option value="sci_fan">Sci Fi & Fantasy</option>
+							<option value="west">Western</option>
+						</optgroup>
+						<optgroup label="Non-Fiction">
+							<option value="art_photo">Art & Photography</option>
+							<option value="compu_tech">Computers & Technology</option>
+							<option value="food_wine">Cookbooks, Food & Wine</option>
+							<option value="craft_home">Crafts, Hobbies & Home</option>
+							<option value="edu_ref">Education & Reference</option>
+							<option value="health">Health, Fitness & Dieting</option>
+							<option value="history">History</option>
+							<option value="law">Law</option>
+							<option value="math_sci">Math & Science</option>
+							<option value="medical">Medical</option>
+							<option value="crime_thrill">Mystery, Thriller & Suspense</option>
+							<option value="parent_rel">Parenting & Relationships</option>
+							<option value="relig_spirit">Religion & Spirituality</option>
+							<option value="self_help">Self Help</option>
+							<option value="sports_out">Sports & Outdoors</option>
+							<option value="teens">Teens</option>
+							<option value="travel">Travel</option>
+						</optgroup>
+					</select>
+				</div>
+	<!-- Radio buttons -->
+				<div>
+					<fieldset data-role="controlgroup" data-type="horizontal"  data-mini="true" class="required" >
+						<legend>Part of a Series:</legend>
+						<input type="radio" value="no" name="series" id="series-1" checked="checked" class="required"/>
+						<label for="series-1">No</label>
+						<input type="radio" value="yes" name="series" id="series-2" />
+						<label for="series-2">Yes</label>
+						<p>  Please select either No or Yes"</p>
+					</fieldset>
+				</div>
+	<!-- Input Book Series-->
+				<div>
+					<label for="seriesname">Series Name:</label>
+					<input type="text" placeholder="Please enter Series name if applicable" data-mini="true" name="seriesname" id="seriesname"  />
+				</div>
+	<!-- Input Number in Series  -->
+				<div>
+					<label for="seriesnum">Number in Series:</label>
+					<input type="text" placeholder="Please Enter the Book Number in the Series - digits only" data-mini="true" name="seriesnum" id="seriesnum" class="digits" />
+				</div>
+	<!-- Rate book range slider -->
+				<div>
+					<label for="rate">Rate This Book:</label>
+					<input type="range" data-theme="a" data-mini="true" name="rate" id="rate" value="5" min="0" max="10" />
+					<br/><p>On a Scale of 1 to 10, did you like the book?</p>
+				</div>
+	<!-- Input Comments -->
+				<div class="required">
+					<label for="comments">Reader Comments:</label>
+					<textarea class="required" placeholder="Please enter your opinion of this book" id="comments"></textarea>
+				</div><br />
+				
+	<!-- Date -->
+		<div>
+			<label for="date">Date</label>
+			<input name="mydate" id="date" type="date" data-role="datebox" value="Please click datebox ==>" data-options='{"mode": "calbox"}' class="required date"/>
+   		</div>
+				
+	<!-- Reset and Submit buttons -->
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<input type="submit"  data-inline="true" id="submit" data-mini="true" value="Submit" data-theme="b"/>
+					</div>
+					<div class="ui-block-b">
+						<input type="reset" data-inline="true" id="reset" data-icon="alert" data-mini="true" value="Reset" data-theme="c" />
+					</div>
+				</div>
+				<!--
+				<a href="#recordbookserrors" id="rberrorslink" >Open Errors</a>   removed data-transistion="pop" --> 
+
+			</form>
+
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close addItem page -->
+
+
+<!-- RecordBooksErrors -->
+	<div data-role="dialog" id="recordbookserrors" >
+		<div data-role="header" data-position="fixed">
+			<h1>Fields Missing</h1>
+		</div>
+		
+		<div data-role="content">
+			<ul>
+				<li>Test</li>
+			</ul>
+		</div>
+	</div>
+<!-- close RecordBooksErrors -->	
+
+
+<!-- Under Construction Page -->
+	<div data-role="page" id="underConst">
+		<div data-role="header" data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>
+				<label data-inline="true">Sorry!</label>	
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<img src="diy_puppy.png"/>
+			<p>Requested Page is Under Construction!</p>
+			<p>Free image courtesy of FreeDigitalPhotos.net</p>
+			<p>Image: <a href="http://www.freedigitalphotos.net" target="_blank">FreeDigitalPhotos.net</a></p>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#underConst" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close Under Construction Page -->
+	
+
+	<!-- JavaScript under here -->
+	<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+	<script type="text/javascript" src="jquery.validate.min.js"></script>
+	<script type="text/javascript" src="jquery.couch.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+</body>
 </html>

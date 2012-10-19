@@ -224,39 +224,40 @@ $('#serial').on('pageinit', function(){
      
      
 // Serialization of JSON Data
-    $('#jsonBooks').on('click', function() {
+$('#jsonBooks').on('click', function() {
           $('#theShelf').empty();
           $.ajax({
-			url: 'xhr/data.json',
-			type: 'GET',
+            url: 'xhr/data.json',
+            type: 'GET',
                dataType: 'json',
                success: function(responseText) {
                    for (var i=0, j=responseText.items.length; i<j; i++){
-					var book = responseText.items[i];
-                         	$(""+
-                         	'<li>' +
+                    var book = responseText.items[i];
+                             $(""+
+                             '<li>' +
                                     '<h3>Title:  ' + book.title + '</h3>' +
-                                  	 '<p>Author:  ' + book.author + '</p>' +
-                                  	 '<p>Genre:  ' + book.genre + '</p>' +
-                                	 '<p>ISBN:  ' + book.isbn + '</p>' +
+                                       '<p>Author:  ' + book.author + '</p>' +
+                                       '<p>Genre:  ' + book.genre + '</p>' +
+                                     '<p>ISBN:  ' + book.isbn + '</p>' +
                                     '<p>Comments:  ' + book.comments + '</p>' +
                                     '<p>Series:  ' + book.series + '</p>' +
                                     '<p>Series Name:  ' + book.seriesName + '</p>' +
                                     '<p>Number in Series:  ' + book.seriesNum + '</p>' +
                                     '<p>Date:  ' + book.date + '</p>' +
-						'</li>'
-						).appendTo('#theShelf');
+                        '</li>'
+                        ).appendTo('#theShelf');
                               $("#theShelf").listview("refresh");
-                              	console.log("Working");
-                              	console.log(responseText);
+                                  console.log("Working");
+                                  console.log(responseText);
                     }
-			}  
-          });
+            }  
+               }
+          );
+          return false;
      });
-     return false;
-});
-     	
 
+     	
+});	
 
 
 /*
@@ -349,13 +350,4 @@ $('#serial').on('pageinit', function(){
 
 
 
-/*					$('#theShelf').append(
-						$('<a>').attr("href", "#").text(title),
-						$('<a>').attr("href", "#").text(author),
-						$('<a>').attr("href", "#").text(genre),
 
-						$('<a>').attr("href", "#").text(comments),
-
-						$('<a>').attr("href", "#").text(date)
-					);
-*/

@@ -1,0 +1,1 @@
+$('#home').on("pageshow", function() {});
