@@ -46,7 +46,7 @@
 			<div data-role='fieldcontain'>
 				<a href="#addItem" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Add a Book Now</a> 
 				<a href="#serial" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week2 Data Serialization</a>   
-				<a href="#underConst" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week3 CouchDB</a>
+				<a href="#couchDBpage" data-role="button"  data-mini="true" data-theme="a" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Week3 CouchDB</a>
 			</div> 
 
 		</div><!--Close Home Page Content-->
@@ -63,7 +63,39 @@
 	</div>
 <!--Close Home-->
 
-<!-- Data Serialization -->
+<!-- Week 3 CouchDB -->
+	<div data-role="page" id="theCouchDBPage">
+		<div data-role="header"  data-position="fixed">
+			<div>
+				<a href="#home" alt="home" data-inline="true" data-ajax="false">
+					<img src="images/BookTrackerLogo.png" height="60" width="160" data-inline="true" />
+				</a>	
+				<label data-inline="true">Week3 CouchDB and Cloudant</label>
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<a href="#couch" data-role="button" id="couchBooks" data-theme="a" data-mini="true" data-icon="arrow-r" data-iconpos="right"  data-ajax="false">CouchDB Data</a>
+			</div>	
+		</div>
+		<div>
+			<ul id="onTheCouch" data-role="listview" class="ui-body-a"></ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#search" data-role="button" data-mini="true" data-iconpos="right"  value="search" class="search" data-ajax="false">Search</a></li>
+					<li><a href="#browse" data-role="button" data-mini="true" data-iconpos="right"  value="browse" class="browse" data-ajax="false">Browse</a></li>
+					<li><a href="#newsfeed" data-role="button" data-mini="true" data-iconpos="right"  data-ajax="false">RSS Feed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- close Browse -->
+
+<!-- Week 2 Data Serialization -->
 	<div data-role="page" id="serial">
 		<div data-role="header"  data-position="fixed">
 			<div>
